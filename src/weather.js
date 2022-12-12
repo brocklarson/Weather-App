@@ -31,7 +31,7 @@ async function convertToLatLon(searchTerm){
     }
 }
 
-async function getData(searchTerm = `Tokyo`, units = `Metric`){
+async function getData(searchTerm, units){
     try{
         const location = await convertToLatLon(searchTerm);
         const currentWeather = await getCurrentWeather(location, units);
