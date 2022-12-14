@@ -10,11 +10,36 @@
 
     <link rel="icon" href="./icon.png">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
     <script src="./index.bundle.js" defer></script>
 </head>
 
 <body>
-    
+    <div class="current-weather">
+        <div class="current-weather-overview">
+            <p class="current-condition"></p>
+            <p><span class="current-temp"></span> <span class="main-units"></span><span class="separator"> |</span><span class="secondary-units"></span></p>
+            <p><span class="city"></span><span class="country"></span></p>
+            <p class="time"></p>
+            <span class="condition-icon material-symbols-outlined"></span>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Location ..." autocomplete="off"/>
+                <span class="material-symbols-outlined">search</span>
+            </div>
+        </div>
+        <div class="current-weather-details">
+            <p>Day <span class="temp-max"></span><span class="temp-units"></span></p>
+            <p>Night <span class="temp-min"></span><span class="temp-units"></span></p>
+            <p><span class="feels-like"></span><span class="temp-units"></span></p>
+            <p class="humidity"></p>
+            <p><span class="wind-speed"></span><span class="wind-units"></span></p>
+        </div>
+    </div>
+    <div id="fourDayForecast"></div>
+    <div id="hourlyForecast"></div>
+
+
     <footer id="footer" class="footer">
         <p>Brock Larson &copy; 2022 </p>
         <a href="https://github.com/brocklarson" target="_blank">

@@ -5,9 +5,9 @@ function getDateTime(timezone, dt = null){
     if(!dt) dt = new Date().getTime() / 1000;
     const date = new Date((dt + timezone) * 1000);
 
-    const datetime = date.toUTCString();
     const day = date.getUTCDay();
     const hours = date.getUTCHours();
+    let datetime = date.toUTCString().slice(0,-7);
     return {datetime, day, hours};
 }
 
@@ -51,13 +51,13 @@ function getCurrentWeather(location, currentWeather, todayFullDate){
         city: location.name,
         country: location.country,
         time: todayFullDate,
-        temp: currentWeather.main.temp,
-        temp_min: currentWeather.main.temp_min,
-        temp_max: currentWeather.main.temp_max,
-        feels_like: currentWeather.main.feels_like,
-        humidity: currentWeather.main.humidity,
+        temp: Math.round(currentWeather.main.temp),
+        temp_min: Math.round(currentWeather.main.temp_min),
+        temp_max: Math.round(currentWeather.main.temp_max),
+        feels_like: Math.round(currentWeather.main.feels_like),
+        humidity: Math.round(currentWeather.main.humidity),
         condition: currentWeather.weather[0].main,
-        wind_speed: currentWeather.wind.speed
+        wind_speed: Math.round(currentWeather.wind.speed)
     };
 }
 
@@ -69,8 +69,8 @@ function getFourDayForecast(currentWeather, forecastWeather, todayWeekday){
             {
                 day: day[0].wd,
                 condition: mostCommonCond(day),
-                temp_max: day[0].main.temp,
-                temp_min: day[day.length - 1].main.temp
+                temp_max: Math.round(day[0].main.temp),
+                temp_min: Math.round(day[day.length - 1].main.temp)
             }
         );
     };
@@ -85,7 +85,7 @@ function getHourlyForecast(currentWeather, forecastWeather){
             {
                 day: getDayOfWeek()[dateTime.day],
                 time: dateTime.hours,
-                temp: item.main.temp
+                temp: Math.round(item.main.temp)
             }
         )
     });
