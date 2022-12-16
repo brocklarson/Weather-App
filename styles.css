@@ -17,7 +17,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 32px 32px;
+    margin: 6vh 8vw;
 }
 
 .current-weather-overview > *{
@@ -55,32 +55,33 @@ body{
 }
 
 .search-bar{
-    white-space: nowrap;
     border-bottom: solid 1px var(--font-color);
+    white-space: nowrap;
 }
 
 input{
     border: none;
-    font-size: 1rem;
-    outline: none;
-    width: 200px;
-    padding-left: 4px;
     color: var(--font-color);
+    font-size: 1rem;
+    margin-top: 16px;
+    outline: none;
+    padding-left: 4px;
+    width: 200px;
 }
 
 /* CURRENT WEATHER DETAILS */
 .details-card{
    display: grid;
+   gap: 8px 4px;
    grid-template-columns: 4rem auto;
    grid-template-rows: auto auto;
    margin: 32px 0;
-   gap: 8px 4px;
 }
 
 .details-icon{
-    grid-row-end: span 2;
-    font-size: 3rem !important;
     color: var(--font-color) !important;
+    font-size: 3rem !important;
+    grid-row-end: span 2;
 }
 
 .details-label{
@@ -93,11 +94,11 @@ input{
 
 /* FORECAST */
 .forecast-container{
-    position: absolute;
     bottom: 5vh;
-    width: 100vw;
-    margin: 0 0 50px 0;
     height: 250px;
+    margin: 0 0 50px 0;
+    position: absolute;
+    width: 100vw;
 }
 
 .forecast-selector{
@@ -107,24 +108,24 @@ input{
 }
 
 .forecast-selector p{
-    margin: 0 25px 32px 0;
-    padding: 4px;
-    border: solid 1px var(--font-color);
     border-radius: 5px;
+    border: solid 2px var(--font-color);
     cursor: pointer;
+    margin: 0 25px 32px 0;
+    padding: 6px;
 }
 
 .forecast-selector p.hide{
-    border: none; 
     border-radius: 5px;
+    border: none;
 }
 
 /* FOUR DAY FORECAST */
 .four-day-forecast{
+    color: var(--font-color);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    color: var(--font-color);
 }
 
 .four-day-forecast.hide{
@@ -150,22 +151,50 @@ input{
 }
 
 .fourDayCard-condition{
-    font-size: 3rem !important;
-    margin-top: 8px;
     align-self: center;
+    font-size: 3rem !important;
     justify-self: center;
+    margin-top: 8px;
 }
 
 /* HOURLY FORECAST */
 .hourly-forecast{
-    display: 100vw;
-    height: 100px;
-    background: yellow;
+    color: var(--font-color);
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
 }
 
 .hourly-forecast.hide{
     display: none;
 }
+
+.hourlyCard-container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 50px 8px 50px;
+}
+
+.hourlyCard-time{
+    font-size: 1.5rem;
+    white-space: nowrap;
+}
+
+.hourlyCard-day{
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.hourlyCard-temp{
+    font-size: 1.5rem;
+}
+
+.hourlyCard-condition{
+    font-size: 2.5rem !important;
+    margin-top: 8px;
+}
+
 
 /* FOOTER */
 
@@ -193,4 +222,16 @@ footer {
 
 .fa-github:hover {
     transform: rotate(360deg) scale(1.2);
+}
+
+/* MEDIA QUERIES */
+
+
+@media only screen and (max-width: 650px) {
+    /*Adjust margins and font-size */
+}
+
+@media only screen and (max-height: 650px),
+            screen and (max-width: 500px) {
+    /*change hourly and daily forecast to vertical*/
 }
