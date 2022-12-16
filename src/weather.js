@@ -11,7 +11,7 @@ async function getCurrentWeather (location, units){
 
 async function getForecastWeather (location, units){
     try{
-        const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&units=${units}&cnt=40&appid=2909a74a92741182ac952a9d5596b341`;
+        const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.lon}&units=${units}&cnt=40&appid=2909a74a92741182ac952a9d5596b341`;
         const response = await fetch(url, {mode: `cors`})
         const data = await response.json();
         return data;
@@ -22,7 +22,7 @@ async function getForecastWeather (location, units){
 
 async function convertToLatLon(searchTerm){
     try{
-        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=1&appid=2909a74a92741182ac952a9d5596b341`;
+        const url = `https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=1&appid=2909a74a92741182ac952a9d5596b341`;
         const response = await fetch(url, {mode: `cors`});
         const data = await response.json();
         return data[0];
