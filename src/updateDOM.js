@@ -1,4 +1,4 @@
-const determineConditionIcon = (condition) => {
+const getConditionIcon = (condition) => {
     if(condition.toLowerCase() === `clear`) return `sunny`;
     else if(condition.toLowerCase() === `clouds`) return `cloudy`;
     else if(condition.toLowerCase() === `rain`) return `rainy`;
@@ -22,7 +22,7 @@ const currentWeatherOverview = (currentWeather, units) => {
         currentTemp.innerText = Math.round(currentWeather.temp);
         city.innerText = currentWeather.city + ` `;
         country.innerText = currentWeather.country;
-        icon.innerText = determineConditionIcon(currentWeather.condition);
+        icon.innerText = getConditionIcon(currentWeather.condition);
     }
 
     function setUnits(){
@@ -35,17 +35,10 @@ const currentWeatherOverview = (currentWeather, units) => {
         }
     }
 
-    function toggleUnits(){
-        setUnits();
-        //Need to update values for temp and wind speed here too
-    }
-
     (function init(){
         updateData();
         setUnits();
     })();
-
-    secondaryUnits.addEventListener(`click`, toggleUnits);
 }
 
 const currentWeatherDetails = (currentWeather, units) => {
@@ -95,7 +88,7 @@ const updateFourDayForecast = (fourDayForecast, units) => {
 
         const cond = document.createElement(`span`);
         cond.classList.add(`fourDayCard-condition`, `material-symbols-outlined`);
-        cond.innerText = determineConditionIcon(condition);
+        cond.innerText = getConditionIcon(condition);
 
         const unitsSpan = document.createElement(`span`);
         if(units === `Metric`) unitsSpan.innerText = `\u00B0C`;
@@ -157,7 +150,7 @@ const updateHourlyForecast = (hourlyForecast, units) => {
 
         const cond = document.createElement(`span`);
         cond.classList.add(`hourlyCard-condition`, `material-symbols-outlined`);
-        cond.innerText = determineConditionIcon(condition);
+        cond.innerText = getConditionIcon(condition);
 
         container.appendChild(card);
         card.appendChild(time);

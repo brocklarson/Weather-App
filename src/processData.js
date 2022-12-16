@@ -1,7 +1,7 @@
 import getData from './weather.js';
 
 function getDateTime(timezone, dt = null){
-    //converts time given from API to time in the searched city
+    //converts time given from openweather API to time in the searched city
     if(!dt) dt = new Date().getTime() / 1000;
     const date = new Date((dt + timezone) * 1000);
 
@@ -12,7 +12,7 @@ function getDateTime(timezone, dt = null){
 }
 
 function mostCommonCond(array){
-    //Goes through each hour and find most common weather condition for the day
+    //Goes through each hour and finds most common weather condition for the day
     if(array.length == 0) return null;
     let modeMap = {};
     let maxEl = array[0].weather[0].main, maxCount = 1;
@@ -34,6 +34,7 @@ function getDayOfWeek(){
 
 function extractDayWeather(n, currentWeather, forecastWeather, todayWeekday){
     let weekday;
+    //Goes through the hourly forecast and gets just the data from the desired day
     const day = forecastWeather.list.filter(item => {
         const wd = getDateTime(currentWeather.timezone, item.dt).day;
         if((wd === todayWeekday + n) || (wd === todayWeekday - (7 - n))){

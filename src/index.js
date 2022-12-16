@@ -16,15 +16,18 @@ async function updateWeather(searchTerm = `Tokyo`, units = `Metric`){
         events.publish('updateLocalStorage', [`weather-app`, {city: searchTerm, units: units}]);
     }catch(err){
         console.log(err);
+        window.alert(`Could not find city.\nYour search must be in the form of "City", "City, State", or "City, Country".`)
     }
 }
 
+//Fires when a new city is searched
 form.addEventListener(`submit`, function(event){
     event.preventDefault();
     const searchTerm = search.value;
     updateWeather(searchTerm);
 });
 
+//Fires when clicking the C or F to change units
 unitsSelector.addEventListener(`click`, function(){
     const lastSearch = getLocalStorage(`weather-app`);
     let units;
@@ -33,16 +36,12 @@ unitsSelector.addEventListener(`click`, function(){
     updateWeather(lastSearch.city, units);
 });
 
+//Fires when clicking 'Daily' or 'Hourly' to change the forecast view
 forecastSelector.addEventListener(`click`, function(){
-    const fourDayForecast = document.querySelector(`.four-day-forecast`);
-    const hourlyForecast = document.querySelector(`.hourly-forecast`);
-    const daily = document.querySelector(`#daily`);
-    const hourly = document.querySelector(`#hourly`);
-
-    fourDayForecast.classList.toggle(`hide`);
-    hourlyForecast.classList.toggle(`hide`);
-    daily.classList.toggle('hide');
-    hourly.classList.toggle('hide');
+    document.querySelector(`.four-day-forecast`).classList.toggle(`hide`);
+    document.querySelector(`.hourly-forecast`).classList.toggle(`hide`);
+    document.querySelector(`#daily`).classList.toggle(`hide`);
+    document.querySelector(`#hourly`).classList.toggle(`hide`);
 });
 
 (function init(){
