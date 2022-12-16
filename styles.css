@@ -91,16 +91,44 @@ input{
     font-size: 1.75rem;
 }
 
-/* FOUR DAY FORECAST */
-.four-day-forecast{
+/* FORECAST */
+.forecast-container{
     position: absolute;
     bottom: 5vh;
+    width: 100vw;
+    margin: 0 0 50px 0;
+    height: 250px;
+}
+
+.forecast-selector{
     display: flex;
     flex-direction: row;
-    width: 100vw;
+    margin-left: 5vw;
+}
+
+.forecast-selector p{
+    margin: 0 25px 32px 0;
+    padding: 4px;
+    border: solid 1px var(--font-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forecast-selector p.hide{
+    border: none; 
+    border-radius: 5px;
+}
+
+/* FOUR DAY FORECAST */
+.four-day-forecast{
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    margin: 50px 4px;
     color: var(--font-color);
+}
+
+.four-day-forecast.hide{
+    display: none;
 }
 
 .fourDayCard-container{
@@ -126,6 +154,17 @@ input{
     margin-top: 8px;
     align-self: center;
     justify-self: center;
+}
+
+/* HOURLY FORECAST */
+.hourly-forecast{
+    display: 100vw;
+    height: 100px;
+    background: yellow;
+}
+
+.hourly-forecast.hide{
+    display: none;
 }
 
 /* FOOTER */
