@@ -85,7 +85,8 @@ function getHourlyForecast(currentWeather, forecastWeather){
             {
                 day: getDayOfWeek()[dateTime.day],
                 time: dateTime.hours,
-                temp: item.main.temp
+                temp: item.main.temp,
+                condition: item.weather[0].main
             }
         )
     });

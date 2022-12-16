@@ -14,7 +14,6 @@ async function updateWeather(searchTerm = `Tokyo`, units = `Metric`){
         const {currentConditions, fourDayForecast, hourlyForecast} = await weatherData(searchTerm, units);
         updateDOM(currentConditions, fourDayForecast, hourlyForecast, units);
         events.publish('updateLocalStorage', [`weather-app`, {city: searchTerm, units: units}]);
-        console.log('hourly', hourlyForecast);
     }catch(err){
         console.log(err);
     }

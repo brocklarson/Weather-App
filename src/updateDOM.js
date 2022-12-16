@@ -126,11 +126,68 @@ const updateFourDayForecast = (fourDayForecast, units) => {
     })();
 }
 
+const updateHourlyForecast = (hourlyForecast, units) => {
+    const container = document.querySelector(`.hourly-forecast`);
+
+    function formatTime(timeOfDay){
+        if(timeOfDay > 12) return (timeOfDay - 12) + ` pm`;
+        else return timeOfDay + ` am`;
+    }
+
+    function createCards(timeOfDay, dayOfWeek, temp, condition, units){
+        const card = document.createElement(`div`);
+        card.classList.add('hourlyCard-container');
+
+        const time = document.createElement(`p`);
+        time.classList.add(`hourlyCard-time`);
+        time.innerText = formatTime(timeOfDay);
+
+        const day = document.createElement(`p`);
+        day.classList.add(`hourlyCard-day`);
+        day.innerText = dayOfWeek;  
+
+        const tempSpan = document.createElement(`span`);
+        tempSpan.classList.add(`hourlyCard-temp`);
+        const min = document.createElement(`span`);
+        min.innerText = Math.round(temp);
+
+        const unitsSpan = document.createElement(`span`);
+        if(units === `Metric`) unitsSpan.innerText = `\u00B0C`;
+        else unitsSpan.innerText = `\u00B0F`;
+
+        const cond = document.createElement(`span`);
+        cond.classList.add(`hourlyCard-condition`, `material-symbols-outlined`);
+        cond.innerText = determineConditionIcon(condition);
+
+        container.appendChild(card);
+        card.appendChild(time);
+        card.appendChild(day);
+        card.appendChild(tempSpan);
+        tempSpan.appendChild(min);
+        tempSpan.appendChild(unitsSpan);
+        card.appendChild(cond);
+    }
+
+    function reset() {
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+    }
+
+    (function init(){
+        reset();
+        hourlyForecast.forEach(day => {
+            createCards(day.time, day.day, day.temp, day.condition, units);
+        });
+    })();
+
+}
+
 function updateDOM(currentWeather, fourDayForecast, hourlyForecast, units){
     currentWeatherOverview(currentWeather, units);
     currentWeatherDetails(currentWeather, units);
     updateFourDayForecast(fourDayForecast, units);
-    return;
+    updateHourlyForecast(hourlyForecast, units);
 }
 
 export default updateDOM;
