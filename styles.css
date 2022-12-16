@@ -4,10 +4,15 @@
 }
 
 :root{
-    --font-color: black;
+    --font-color: white;
+    --font-scaler: 1;
 }
 
 body{
+    background-attachment:fixed;
+    background-image: url(./bg.png);
+    background-position:center;
+    background-repeat:no-repeat;
     color: var(--font-color);
     font-family: sans-serif;
 }
@@ -25,15 +30,15 @@ body{
 }
 
 .current-condition{
-    font-size: 3rem;
+    font-size: calc(var(--font-scaler) * 3rem);
 }
 
 .current-temp, .main-units{
-    font-size: 2.5rem;
+    font-size: calc(var(--font-scaler) * 2.5rem);
 }
 
 .separator, .secondary-units{
-    font-size: 1rem;
+    font-size: calc(var(--font-scaler) * 1rem);
     vertical-align: top;
 }
 
@@ -42,16 +47,16 @@ body{
 }
 
 .city{
-    font-size: 1.25rem;
+    font-size: calc(var(--font-scaler) * 1.25rem);
 }
 
 .country{
-    font-size: 0.75rem;
+    font-size: calc(var(--font-scaler) * 0.75rem);
 }
 
 .condition-icon{
     display: block !important;
-    font-size: 5rem !important;
+    font-size: calc(var(--font-scaler) * 5rem) !important;
 }
 
 .search-bar{
@@ -60,9 +65,10 @@ body{
 }
 
 input{
+    background: none;
     border: none;
     color: var(--font-color);
-    font-size: 1rem;
+    font-size: calc(var(--font-scaler) * 1rem);
     margin-top: 16px;
     outline: none;
     padding-left: 4px;
@@ -80,16 +86,16 @@ input{
 
 .details-icon{
     color: var(--font-color) !important;
-    font-size: 3rem !important;
+    font-size: calc(var(--font-scaler) * 3rem) !important;
     grid-row-end: span 2;
 }
 
 .details-label{
-    font-size: 0.75rem;
+    font-size: calc(var(--font-scaler) * 0.75rem);
 }
 
 .details-data{
-    font-size: 1.75rem;
+    font-size: calc(var(--font-scaler) * 1.75rem);
 }
 
 /* FORECAST */
@@ -138,21 +144,21 @@ input{
 }
 
 .fourDayCard-day{
-    font-size: 1.75rem;
+    font-size: calc(var(--font-scaler) * 1.75rem);
     margin-bottom: 8px;
 }
 
 .fourDayCard-max{
-    font-size: 1.5rem;
+    font-size: calc(var(--font-scaler) * 1.5rem);
 }
 
 .fourDayCard-min{
-    font-size: 1rem;
+    font-size: calc(var(--font-scaler) * 1rem);
 }
 
 .fourDayCard-condition{
     align-self: center;
-    font-size: 3rem !important;
+    font-size: calc(var(--font-scaler) * 3rem) !important;
     justify-self: center;
     margin-top: 8px;
 }
@@ -177,21 +183,21 @@ input{
 }
 
 .hourlyCard-time{
-    font-size: 1.5rem;
+    font-size: calc(var(--font-scaler) * 1.5rem);
     white-space: nowrap;
 }
 
 .hourlyCard-day{
-    font-size: 1rem;
+    font-size: calc(var(--font-scaler) * 1rem);
     margin-bottom: 8px;
 }
 
 .hourlyCard-temp{
-    font-size: 1.5rem;
+    font-size: calc(var(--font-scaler) * 1.5rem);
 }
 
 .hourlyCard-condition{
-    font-size: 2.5rem !important;
+    font-size: calc(var(--font-scaler) * 2.5rem) !important;
     margin-top: 8px;
 }
 
@@ -205,7 +211,7 @@ footer {
     color: var(--font-color);
     display: flex;
     font-family: sans-serif;
-    font-size: 1em;
+    font-size: 1rem;
     gap: 10px;
     height: 5vh;
     justify-content: center;
@@ -216,7 +222,7 @@ footer {
 
 .fa-github {
     color: var(--font-color);
-    font-size: 1em;
+    font-size: 1rem;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -228,10 +234,40 @@ footer {
 
 
 @media only screen and (max-width: 650px) {
-    /*Adjust margins and font-size */
+    :root{
+        --font-scaler: 0.85;
+    }
+    .current-weather{
+        margin: 3vh 5vw;
+    }
+
+    .forecast-container{
+        margin: 0 0 30px 0;
+    }
+    
+    .hourlyCard-container{
+        margin: 0 25px 8px 25px;
+    }
 }
 
-@media only screen and (max-height: 650px),
-            screen and (max-width: 500px) {
-    /*change hourly and daily forecast to vertical*/
+@media only screen and (max-height: 650px), screen and (max-width: 500px) {
+    :root{
+        --font-scaler: 0.75;
+    }
+    .current-weather{
+        margin: 1vh 3vw;
+    }
+
+    input{
+        width: 100px;
+    }
+
+    .forecast-container{
+        margin: 0 0 20px 0;
+    }
+    
+    .hourlyCard-container{
+        margin: 0 25px 8px 25px;
+    }
+   
 }
