@@ -124,6 +124,8 @@ const updateHourlyForecast = (hourlyForecast, units) => {
 
     function formatTime(timeOfDay){
         if(timeOfDay > 12) return (timeOfDay - 12) + ` pm`;
+        else if(timeOfDay === 12) return `12 pm`;
+        else if(timeOfDay === 0) return `12 am`;
         else return timeOfDay + ` am`;
     }
 
