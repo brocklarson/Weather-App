@@ -21,22 +21,36 @@
             <p class="current-condition"></p>
             <p><span class="current-temp"></span> <span class="main-units"></span><span class="separator"> |</span><span class="secondary-units"></span></p>
             <p><span class="city"></span><span class="country"></span></p>
-            <p class="time"></p>
             <span class="condition-icon material-symbols-outlined"></span>
-            <div class="search-bar">
+            <form class="search-bar">
                 <input type="text" placeholder="Search Location ..." autocomplete="off"/>
                 <span class="material-symbols-outlined">search</span>
-            </div>
+            </form>
         </div>
         <div class="current-weather-details">
-            <p>Day <span class="temp-max"></span><span class="temp-units"></span></p>
-            <p>Night <span class="temp-min"></span><span class="temp-units"></span></p>
-            <p><span class="feels-like"></span><span class="temp-units"></span></p>
-            <p class="humidity"></p>
-            <p><span class="wind-speed"></span><span class="wind-units"></span></p>
+            <div class="details-card">
+                <span class="details-icon material-symbols-outlined">device_thermostat</span>
+                <span class="details-label">Min/Max</span>
+                <span class="details-data"><span class="temp-min-max"></span><span class="temp-units"></span></span>
+            </div>
+            <div class="details-card">
+                <span class="details-icon material-symbols-outlined">temp_preferences_custom</span>
+                <span class="details-label">Feels Like</span>
+                <span class="details-data"><span class="feels-like"></span><span class="temp-units"></span></span>
+            </div>
+            <div class="details-card">
+                <span class="details-icon material-symbols-outlined">humidity_percentage</span>
+                <span class="details-label">Humidity</span>
+                <span class="humidity details-data"></span>
+            </div>
+            <div class="details-card">
+                <span class="details-icon material-symbols-outlined">air</span>
+                <span class="details-label">Wind Speed</span>
+                <span class="details-data"><span class="wind-speed"></span><span class="wind-units"></span></span>
+            </div>
         </div>
     </div>
-    <div id="fourDayForecast"></div>
+    <div class="four-day-forecast"></div>
     <div id="hourlyForecast"></div>
 
 

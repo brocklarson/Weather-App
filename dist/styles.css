@@ -49,10 +49,6 @@ body{
     font-size: 0.75rem;
 }
 
-.time{
-    font-size: 1rem;
-}
-
 .condition-icon{
     display: block !important;
     font-size: 5rem !important;
@@ -68,11 +64,68 @@ input{
     font-size: 1rem;
     outline: none;
     width: 200px;
+    padding-left: 4px;
+    color: var(--font-color);
 }
 
 /* CURRENT WEATHER DETAILS */
-.current-weather-details > *{
-    margin: 12px 0;
+.details-card{
+   display: grid;
+   grid-template-columns: 4rem auto;
+   grid-template-rows: auto auto;
+   margin: 32px 0;
+   gap: 8px 4px;
+}
+
+.details-icon{
+    grid-row-end: span 2;
+    font-size: 3rem !important;
+    color: var(--font-color) !important;
+}
+
+.details-label{
+    font-size: 0.75rem;
+}
+
+.details-data{
+    font-size: 1.75rem;
+}
+
+/* FOUR DAY FORECAST */
+.four-day-forecast{
+    position: absolute;
+    bottom: 5vh;
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    justify-content: space-around;
+    margin: 50px 4px;
+    color: var(--font-color);
+}
+
+.fourDayCard-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.fourDayCard-day{
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+}
+
+.fourDayCard-max{
+    font-size: 1.5rem;
+}
+
+.fourDayCard-min{
+    font-size: 1rem;
+}
+
+.fourDayCard-condition{
+    font-size: 3rem !important;
+    margin-top: 8px;
+    align-self: center;
+    justify-self: center;
 }
 
 /* FOOTER */
