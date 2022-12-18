@@ -1,4 +1,4 @@
-import getData from './weather.js';
+import getData from './API.js';
 
 function getDateTime(timezone, dt = null){
     //converts time given from openweather API to time in the searched city

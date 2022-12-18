@@ -11,6 +11,7 @@ const forecastSelector = document.querySelector(`.forecast-selector`);
 
 async function updateWeather(searchTerm = `Tokyo`, units = `Metric`){
     try{
+        //search for last used units
         const {currentConditions, fourDayForecast, hourlyForecast} = await weatherData(searchTerm, units);
         updateDOM(currentConditions, fourDayForecast, hourlyForecast, units);
         events.publish('updateLocalStorage', [`weather-app`, {city: searchTerm, units: units}]);
@@ -24,7 +25,9 @@ async function updateWeather(searchTerm = `Tokyo`, units = `Metric`){
 form.addEventListener(`submit`, function(event){
     event.preventDefault();
     const searchTerm = search.value;
-    updateWeather(searchTerm);
+    let units = `Metric`;
+    if(getLocalStorage(`weather-app`)) units = getLocalStorage(`weather-app`).units;
+    updateWeather(searchTerm, units);
 });
 
 //Fires when clicking the C or F to change units
